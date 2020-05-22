@@ -8,9 +8,9 @@ export function handleInitialData (userId) {
     return (dispatch) => {
       dispatch(showLoading())
       return getInitialData()
-        .then(({ users, tweets }) => {
+        .then(({ users, questions }) => {
           dispatch(receiveUsers(users))
-          dispatch(receiveQuestions(tweets))
+          dispatch(receiveQuestions(questions))
           dispatch(setAuthedUser(userId ? userId : null))
           dispatch(hideLoading())
         })
