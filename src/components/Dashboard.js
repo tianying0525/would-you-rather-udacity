@@ -1,15 +1,47 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+//import QuestionTile from './QuestionTile'
+import Question from './Question'
 
 class Dashboard extends Component {
+    state = {
+        showAnswered: false
+    }
+
+    filterQuestionsUnanswered = () => {
+        this.setState({showAnswered: false })   
+    }
+
+    filterQuestionsAnswered = () => {
+        this.setState({showAnswered: true })   
+    }
+
     render() {
+        const { showAnswered } = this.state;
+        const { questions, authedUser } = this.props
+        const questionsArray = Object.values(questions)
+        const filteredQuestions = questionsArray.filter(function(question) {
+            const contains = (
+                question.optionOne.votes.indexOf(authedUser) > -1 ||
+                question.optionTwo.votes.indexOf(authedUser) > -1
+            );
+            return showAnswered ? contains : !contains;
+        });
+        const sortedQuestions = filteredQuestions.sort((a, b) => b.timestamp - a.timestamp);
         return (
             <div>
-                <h3 className='center'>Your Timeline</h3>
-                <ul className='dashboard-list'>
-                    {this.props.notAnsweredQIds.map((id) => (
-                        <li key={id}>
-                            <div>Question ID: {id}</div>
+                <div className="btn-group">
+                    <button  onClick={this.filterQuestionsUnanswered}>Unanswered Questions</button>
+                    <button onClick={this.filterQuestionsAnswered}>Answered Questions</button>
+                </div>
+
+                <ul className="questions-list">
+                    {sortedQuestions.map((question) => (
+                        <li key={question.id}>
+                            <Link to={`question/${question['id']}`}>
+                                <Question id={question.id}/>
+                            </Link>
                         </li>
                     ))}
                 </ul>
@@ -18,21 +50,11 @@ class Dashboard extends Component {
     }
 }
 
-function mapStateToProps({ questions, authedUser }) {
-
-    const notAnsweredQuestions = Object.values(questions).filter((question) =>
-        !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser))
-
-    const answeredQuestions = Object.values(questions).filter((question) =>
-        question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
-    )
-
+function mapStateToProps( { questions, authedUser }) {
     return {
-        notAnsweredQIds: Object.values(notAnsweredQuestions)
-            .sort((a, b) => b.timestamp - a.timestamp).map((q) => q.id),
-        answeredQIds: Object.values(answeredQuestions)
-            .sort((a, b) => b.timestamp - a.timestamp).map((q) => q.id)
+        authedUser,
+        questions,
     }
 }
 
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps)(Dashboard);

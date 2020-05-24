@@ -1,0 +1,37 @@
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+class Question extends Component {
+    render() {
+        const { question, author } = this.props;
+        return (
+            <div>
+                <div>{author.name} asks</div>
+                <div>
+                    <div>
+                        <img alt="avatar" className="avatar" src={`/${author.avatarURL}`}/>
+                    </div>
+                    
+                    <div>
+                        <div>Would you rather</div>
+                        <div>{question.optionOne.text}...</div>
+                        <button className="btn-default">View Poll</button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+function mapStateToProps ({authedUser, users, questions}, { id }) {
+    const question = questions[id]
+    const author = question ? users[question.author] : null
+  
+    return {
+        authedUser,
+        question,
+        author
+    }
+}
+
+export default connect(mapStateToProps)(Question);
