@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { handleAddQuestion } from  '../actions/questions'
 
-class NewQuestion extends Component {	
+class NewQuestion extends React.Component {	
 	state = {      
     	optionOneText:'',
 		optionTwoText:'',

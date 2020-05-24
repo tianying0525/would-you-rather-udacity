@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
-class Leaderboard extends Component {
+class Leaderboard extends React.Component {
     render() {
         const { users} = this.props
         const sortedUsers = users.sort( (a, b) => b.totalScore - a.totalScore)

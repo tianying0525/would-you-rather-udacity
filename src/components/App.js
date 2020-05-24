@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
@@ -11,7 +11,7 @@ import NewQuestion from './NewQuestion';
 import PrivateRoute from './PrivateRoute'
 import NotFound from './NotFound'
 
-class App extends Component {
+class App extends React.Component {
   	componentDidMount() {
     	this.props.dispatch(handleInitialData())
 	}

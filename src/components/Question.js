@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
-class Question extends Component {
+class Question extends React.Component {
     render() {
         const { question, author } = this.props;
         return (

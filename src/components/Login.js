@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import { Redirect, withRouter } from 'react-router-dom'
 import { setAuthedUser, clearAuthedUser } from '../actions/authedUser';
 
-class Login extends Component {
+class Login extends React.Component {
 	state = {
 		userId: null,
 		isLoggin: false,

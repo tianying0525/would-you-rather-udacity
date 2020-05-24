@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 //import QuestionTile from './QuestionTile'
 import Question from './Question'
 
-class Dashboard extends Component {
+class Dashboard extends React.Component {
     state = {
         showAnswered: false
     }
