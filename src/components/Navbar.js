@@ -11,7 +11,7 @@ class Navbar extends React.Component {
         const { authedUser } = this.props
         return (
 
-            <nav className='nav'>
+            <nav>
                 <ul>
                     <li style={mystyle}>
                         <NavLink to='/dashboard'>

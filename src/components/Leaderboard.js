@@ -12,7 +12,7 @@ class Leaderboard extends React.Component {
                 <li key={user.id}>
                     <div>
                     <div>
-                        <img alt="avatar" className="avatar" src={`/${user.avatarURL}`}/>
+                        <img alt="avatar" src={`/${user.avatarURL}`}/>
                     </div>
                     <div>
                         <div>{user.name}</div>

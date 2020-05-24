@@ -52,7 +52,7 @@ class QuestionDetail extends React.Component {
                 )}
                 <div>
                     <div>
-                        <img alt="avatar" className="avatar" src={`/${author.avatarURL}`}/>
+                        <img alt="avatar" src={`/${author.avatarURL}`}/>
                     </div>
                     
                     {!answered ? (

@@ -48,7 +48,7 @@ class Login extends React.Component {
 		        <div>Welcome To Would You Rather App</div>
 		        <div>
 					<div>Please sign in to continue</div>
-					<select id="login-select" value={selected} onChange={this.handleSelectionChanged}>
+					<select value={selected} onChange={this.handleSelectionChanged}>
 						<option value="-1" disabled>Select user...</option>
 						{Object.keys(users).map(function(key) {
 							return (
@@ -61,7 +61,6 @@ class Login extends React.Component {
 				</div>
 
 				<button
-					className='btn'
 					disabled={userId === null}
 					onClick={this.handleLogin}>
 					Login

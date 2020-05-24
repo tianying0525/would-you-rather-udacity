@@ -31,12 +31,12 @@ class Dashboard extends React.Component {
         const sortedQuestions = filteredQuestions.sort((a, b) => b.timestamp - a.timestamp);
         return (
             <div>
-                <div className="btn-group">
+                <div>
                     <button  onClick={this.filterQuestionsUnanswered}>Unanswered Questions</button>
                     <button onClick={this.filterQuestionsAnswered}>Answered Questions</button>
                 </div>
 
-                <ul className="questions-list">
+                <ul>
                     {sortedQuestions.map((question) => (
                         <li key={question.id}>
                             <Link to={`question/${question['id']}`}>

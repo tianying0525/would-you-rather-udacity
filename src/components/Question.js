@@ -9,13 +9,13 @@ class Question extends React.Component {
                 <div>{author.name} asks</div>
                 <div>
                     <div>
-                        <img alt="avatar" className="avatar" src={`/${author.avatarURL}`}/>
+                        <img alt="avatar" src={`/${author.avatarURL}`}/>
                     </div>
                     
                     <div>
                         <div>Would you rather</div>
                         <div>{question.optionOne.text}...</div>
-                        <button className="btn-default">View Poll</button>
+                        <button>View Poll</button>
                     </div>
                 </div>
             </div>

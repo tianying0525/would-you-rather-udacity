@@ -20,9 +20,9 @@ class App extends React.Component {
 		return (
 			<Router>
 				
-					<div className='container'>
+					<div>
 						<Navbar />
-							<div className="main-content"> 
+							<div> 
 								<Switch>
 									<Route path="/" exact component={Login}/>
 									<PrivateRoute path='/dashboard' exact component={Dashboard} />
